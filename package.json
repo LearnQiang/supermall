@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.20.0",
+    "better-scroll": "^1.13.2",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-router": "^3.0.1"
@@ -23,9 +24,9 @@
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
-    "root": true,
+    "root": false,
     "env": {
-      "node": true
+      "node": false
     },
     "extends": [
       "plugin:vue/essential",
