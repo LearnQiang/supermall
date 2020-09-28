@@ -2,7 +2,7 @@
   <div>
     <nav-bar>
       <div slot="left" class="back" @click="backClick">
-        <img src="~assets/img/common/back.svg" alt="">
+        <img  src="~assets/img/common/jt.png" alt="">
       </div>
       <div slot="center" class="titles">
         <div v-for="(item,index) in titles" :key="index"
@@ -29,11 +29,11 @@ export default {
     }
   },
   methods: {
-    titleClick(index){
+    titleClick(index) {
       this.currentIndex = index
-      this.$emit('tenTopClick',index)
+      this.$emit('tenTopClick', index)
     },
-    backClick(){
+    backClick() {
       this.$router.back()
     }
   }
@@ -55,6 +55,8 @@ export default {
 }
 
 .back img {
-  margin-top: 13px;
+  margin-top: 12px;
+  height: 20px;
+  width: 20px;
 }
 </style>
