@@ -1,6 +1,8 @@
 <template>
   <div id="home">
-    <nav-bar class="home-nav"><div slot="center">购物街</div></nav-bar>
+    <nav-bar class="home-nav">
+      <div slot="center">购物街</div>
+    </nav-bar>
     <tab-control :title="['流行','新款','新品']" @tabClick="tabClick"
                  ref="tabControl1" class="tab" v-show="isTabFixed"></tab-control>
     <scroll class="content" ref="scroll" :probe-type="3" @scroll="contentScroll"
@@ -17,7 +19,6 @@
 
 <script>
 import NavBar from "@/components/common/navbar/NavBar";
-import {getHomeMultidata, getHomeGoods} from "@/network/home";
 import HomeSwiper from "@/views/home/childComps/HomeSwiper";
 import HomeRecommend from "@/views/home/childComps/HomeRecommend";
 import FeatureView from "@/views/home/childComps/FeatureView";
@@ -25,6 +26,7 @@ import TabControl from "@/components/content/tabcontrol/TabControl";
 import GoodsList from "@/components/content/goods/GoodsList";
 import Scroll from "@/components/common/scroll/Scroll";
 import BackTop from "@/components/content/backtop/BackTop";
+import {getHomeMultidata, getHomeGoods} from "@/network/home";
 
 
 export default {
@@ -64,10 +66,9 @@ export default {
     this.getHomeGoods('sell')
   },
   mounted() {
-    //监听item中图片加载完成
+    //监听item中图片加载完成,重新计算scroll的可滚动的高度
     //监听事件总线里的方法,$bus为空,必须要在main.js里定义一个vue实例
     this.$bus.$on('itemImgLoad', () => {
-      //重新计算scroll的可滚动的高度
       this.$refs.scroll && this.$refs.scroll.refresh()
     })
   },
@@ -77,10 +78,12 @@ export default {
     }
   },
   activated() {
-    this.$refs.scroll.scrollTo(0,this.saveY,0)
+    //进入时设置离开时的位置
+    this.$refs.scroll.scrollTo(0, this.saveY, 0)
     this.$refs.scroll.refresh()
   },
   deactivated() {
+    //记录离开时y轴的位置
     this.saveY = this.$refs.scroll.getScrollY()
   },
   methods: {
@@ -140,7 +143,6 @@ export default {
 
 <style scoped>
 #home {
-  /*padding-top: 44px;*/
   height: 100vh;
   position: relative;
 }
@@ -148,17 +150,11 @@ export default {
 .home-nav {
   background-color: var(--color-tint);
   color: #f6f6f6;
-  /*position: fixed;*/
-  /*left: 0;*/
-  /*right: 0;*/
-  /*top: 0;*/
-  /*z-index: 1;*/
 }
 
-
 .content {
-  overflow: hidden;
   position: absolute;
+  overflow: hidden;
   top: 44px;
   bottom: 49px;
   left: 0;

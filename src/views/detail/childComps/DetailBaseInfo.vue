@@ -51,12 +51,12 @@ export default {
 }
 
 .info-price .n-price {
-  font-size: 24px;
+  font-size: 22px;
   color: var(--color-high-text);
 }
 
 .info-price .o-price {
-  font-size: 13px;
+  font-size: 12px;
   margin-left: 5px;
   text-decoration: line-through;
 }
@@ -90,14 +90,14 @@ export default {
 }
 
 .info-service-item img {
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   position: relative;
   top: 2px;
 }
 
 .info-service-item span {
-  font-size: 13px;
+  font-size: 12px;
   color: #333;
 }
 </style>

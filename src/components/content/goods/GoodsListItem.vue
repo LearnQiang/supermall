@@ -1,6 +1,6 @@
 <template>
   <div class="goods-item">
-    <img :src="goodsItem.show.img" alt="" @load="imageLoad" @click="itemClick">
+    <img v-lazy="isShowImage" alt="" @load="imageLoad" @click="itemClick">
     <div class="goods-info">
       <p>{{ goodsItem.title }}</p>
       <span class="price">{{ goodsItem.price }}</span>
@@ -24,9 +24,16 @@ export default {
     imageLoad() {
       //发送方法给事件总线
       this.$bus.$emit('itemImgLoad')
+      this.$bus.$emit('detailItemImgLoad')
     },
     itemClick() {
       this.$router.push('/detail/' + this.goodsItem.iid)
+    }
+  },
+  computed: {
+    isShowImage() {
+      //判断是哪个页面的image有值就用哪个
+      return this.goodsItem.image || this.goodsItem.show.img
     }
   }
 }

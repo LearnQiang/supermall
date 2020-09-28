@@ -40,15 +40,15 @@ export default {
   flex: 1;
   text-align: center;
   height: 49px;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 /*图片设置高度*/
 .tab-bar-item img {
-  width: 24px;
-  height: 24px;
-  margin-top: 3px;
+  width: 26px;
+  height: 26px;
+  margin-top: 4px;
   vertical-align: middle;
-  margin-bottom: 1px;
+  margin-bottom: 2px;
 }
 </style>
