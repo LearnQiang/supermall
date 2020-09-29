@@ -90,10 +90,10 @@ export default {
     this.getThemeTopY = debounce(() => {
       //获取每个组件的高度
       this.tenMeTops = [0]
-      this.tenMeTops.push(this.$refs.param.$el.offsetTop)
-      this.tenMeTops.push(this.$refs.comment.$el.offsetTop)
-      this.tenMeTops.push(this.$refs.goodsList.$el.offsetTop)
-    }, 500)
+      this.tenMeTops.push(this.$refs.param && this.$refs.param.$el.offsetTop)
+      this.tenMeTops.push(this.$refs.comment && this.$refs.comment.$el.offsetTop)
+      this.tenMeTops.push(this.$refs.goodsList && this.$refs.goodsList.$el.offsetTop)
+    }, 300)
   },
   methods: {
     imageLoad() {
